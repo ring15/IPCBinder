@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var bookManager: BookManager
     var isConnection = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +23,6 @@ class MainActivity : AppCompatActivity() {
             if (!isConnection){
                 attemptToBindService()
             }
-            val book = Book()
-            book.price = 101
-            book.name = "编码"
-            bookManager.addBook(book)
-            Log.d("main", "bookmanager:"+bookManager.getBooks().toString())
         }
     }
 
@@ -45,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             isConnection = true
-            bookManager = Stub.asInterface(service)
         }
     }
 
