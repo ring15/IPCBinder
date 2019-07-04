@@ -1,23 +1,20 @@
 package com.founq.sdk.ipcbinder
 
+import java.util.concurrent.CopyOnWriteArrayList
+
 /**
  * Created by ring on 2019/7/4.
  */
 class IPersonImpl : IPersonAidlInterface.Stub() {
 
-    private var name: String? = null
-    private var age: Int = 0
+    private var mStudentList : CopyOnWriteArrayList<Student> = CopyOnWriteArrayList()
 
-    override fun setName(name: String?) {
-        this.name = name
+    override fun getStudentList(): MutableList<Student> {
+        return mStudentList
     }
 
-    override fun setAge(age: Int) {
-        this.age = age
-    }
-
-    override fun getInfo(): String {
-        return "My name is $name, age is  $age!"
+    override fun addStudent(student: Student?) {
+        mStudentList.add(student)
     }
 
     override fun basicTypes(anInt: Int, aLong: Long, aBoolean: Boolean, aFloat: Float, aDouble: Double, aString: String?) {

@@ -1,13 +1,13 @@
 // IPersonAidlInterface.aidl
 package com.founq.sdk.ipcbinder;
+import com.founq.sdk.ipcbinder.Student;
 
 // Declare any non-default types here with import statements
 
 interface IPersonAidlInterface {
-    //具体的业务
-    void setName(String name);
-    void setAge(int age);
-    String getInfo();
+    List<Student> getStudentList();
+    //定向tag
+    void addStudent(in Student student);
     /**
      * Demonstrates some basic types that you can use as parameters
      * and return values in AIDL.

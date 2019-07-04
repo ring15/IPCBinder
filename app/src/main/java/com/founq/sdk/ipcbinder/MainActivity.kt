@@ -24,10 +24,12 @@ class MainActivity : AppCompatActivity() {
             if (!isConnection){
                 attemptToBindService()
             }
-            Log.i("test", iPersonAidlInterface.info)
-            iPersonAidlInterface.setAge(23)
-            iPersonAidlInterface.setName("ring")
-            Log.i("test2", iPersonAidlInterface.info)
+            Log.i("test", iPersonAidlInterface.studentList.get(0)!!.toString())
+            var student = Student()
+            student.name = "ring"
+            student.id = 23
+            iPersonAidlInterface.addStudent(student)
+            Log.i("test", iPersonAidlInterface.studentList.get(1)!!.toString())
         }
     }
 

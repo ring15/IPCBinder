@@ -15,8 +15,10 @@ class RemoteService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        iPersonImpl.setAge(21)
-        iPersonImpl.setName("loop")
-        Log.i("test1", iPersonImpl.info)
+        var student = Student()
+        student.name = "loop"
+        student.id = 21
+        iPersonImpl.addStudent(student)
+        Log.i("test", iPersonImpl.studentList.get(0)!!.toString())
     }
 }
