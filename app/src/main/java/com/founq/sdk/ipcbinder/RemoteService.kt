@@ -7,11 +7,16 @@ import android.util.Log
 
 class RemoteService : Service() {
 
+    var iPersonImpl = IPersonImpl()
+
     override fun onBind(intent: Intent): IBinder {
-        TODO()
+        return iPersonImpl
     }
 
     override fun onCreate() {
         super.onCreate()
+        iPersonImpl.setAge(21)
+        iPersonImpl.setName("loop")
+        Log.i("test1", iPersonImpl.info)
     }
 }

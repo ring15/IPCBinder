@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var isConnection = false
+    private lateinit var iPersonAidlInterface : IPersonAidlInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
             if (!isConnection){
                 attemptToBindService()
             }
+            Log.i("test", iPersonAidlInterface.info)
+            iPersonAidlInterface.setAge(23)
+            iPersonAidlInterface.setName("ring")
+            Log.i("test2", iPersonAidlInterface.info)
         }
     }
 
@@ -39,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             isConnection = true
+            iPersonAidlInterface = IPersonAidlInterface.Stub.asInterface(service)
         }
     }
 
